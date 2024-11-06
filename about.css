@@ -3,21 +3,31 @@ body {
     background: #F5DE8A;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .container {
-    margin: -52px 34px;
+    margin: -52px 200px;
 }
-
 .header {
     background: #2ECC71;
-    height: 21vh;
+    height: 15vh;
 }
-
 .header-line {
     padding-top: 50px;
     display: flex;
     align-items: center;
 }
+
+/* .container {
+    margin: -52px 34px;
+}
+/* .header {
+    background: #2ECC71;
+    height: 21vh;
+}
+.header-line {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+} */
 
 .nav-item {
     margin: 70px;
