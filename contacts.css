@@ -74,28 +74,60 @@ main {
     margin-bottom: 20px;
 }
 
+
 .button-catalog {
     background-color: #2ECC71;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 25px;
     font-size: 24px;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 40px;
+    margin-left: 100px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 
 .hero h1 {
-    font-size: 40px;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
+.offer-content h1 {
+    font-size: 48px;
+    margin-left: 165px;
+}
+.offer-content h2 {
+    font-size: 32px;
+    text-align: center;
+}
 .offer-content p {
-    font-size: 22px;
-    margin-bottom: 2px;
+    font-size: 24px;
+}
+
+.contacts-content {
+    width: 80%; /* Занять 50% ширины */
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение текста */
+    align-items: flex-start; /* Выравнивание текста по левому краю */
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+.contacts-content h2 {
+    font-size: 24px;
+    margin-top: 18px;
+    margin-bottom: 35px;
+}
+.contacts-content h1 {
+    font-size: 36px;
+    margin-top: -7px;
+}
+.contacts-content p {
+    font-size: 24px;
+    margin-bottom: 12px;
 }
 
 footer {
