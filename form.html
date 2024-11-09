@@ -5,6 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Онлайн магазин мебели - заполнение формы</title>
     <link rel="stylesheet" type="text/css" href="form.css">
+    <style>
+        /* Добавим стили для меток и полей ввода */
+        .form-field {
+            position: relative;
+            margin-bottom: 45px;
+            width: 100%;
+        }
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            outline: none; /* Убирает обводку при фокусе */
+        }
+        .form-field label {
+            position: absolute;
+            left: 2px;
+            top: 10px;
+            color: #888; /* Серый цвет текста */
+            transition: 0.2s ease all;
+        }
+        .form-field input:focus + label,
+        .form-field input:not(:placeholder-shown) + label,
+        .form-field textarea:focus + label,
+        .form-field textarea:not(:placeholder-shown) + label {
+            top: -15px;
+            left: 5px;
+            font-size: 14px;
+            color: #2ECC71; /* Цвет метки при фокусе */
+        }
+        /* Стили для модального окна */
+        .modal {
+            display: none; /* Скрыто по умолчанию */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px; /* Максимальная ширина */
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -13,30 +78,89 @@
                 <div class="header-logo">
                     <img src="logo.png" alt="Логотип">
                 </div>
-
                 <div class="nav">
                     <a class="nav-item" href="index.html">Главная</a>
                     <a class="nav-item" href="catalog.html">Каталог</a>
                     <a class="nav-item" href="about.html">О нас</a>
                     <a class="nav-item" href="contacts.html">Контакты</a>
                 </div>
-
             </div>
         </div>
     </div>
-
     <main>
         <section class="form">
             <div class="form-image">
-                <img src="logo-about.png" alt="Мебель Онлайн">
+                <img src="form.png" alt="Мебель Онлайн">
             </div>
             <div class="form-content-container">
                 <h1>Заполнение формы</h1>
+                <div class="form-field">
+                    <input type="text" id="fio" placeholder=" " required>
+                    <label for="fio">Ваше ФИО</label>
+                    <hr class="underline">
+                </div>
+                <div class="form-field">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Ваш Email</label>
+                    <hr class="underline">
+                </div>
+                <div class="form-field">
+                    <textarea id="comment" placeholder=" " required></textarea>
+                    <label for="comment">Ваш комментарий</label>
+                    <hr class="underline">
+                </div>
+                <button class="submit-button" id="submit-button">Отправить</button>
             </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Онлайн магазин мебели. Все права защищены.</p>
     </footer>
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+            const fio = document.getElementById('fio').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const comment = document.getElementById('comment').value.trim();
+            const modalMessage = document.getElementById('modal-message');
+            const modal = document.getElementById('modal');
+            // Сбросим сообщение об ошибках
+            modalMessage.textContent = '';
+            // Валидация
+            if (!fio || !email || !comment) {
+                modalMessage.textContent = 'Пожалуйста, заполните все поля.';
+                modal.style.display = 'block';
+            } else if (!validateEmail(email)) {
+                modalMessage.textContent = 'Пожалуйста, введите корректный Email.';
+                modal.style.display = 'block';
+            } else {
+                modalMessage.textContent = 'Форма успешно отправлена!';
+                modal.style.display = 'block';
+                // Здесь можно добавить код для отправки данных на сервер
+            }
+        });
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Простой регэксп для проверки email
+            return re.test(String(email).toLowerCase());
+        }
+        // Закрытие модального окна
+        document.getElementById('close-modal').onclick = function() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

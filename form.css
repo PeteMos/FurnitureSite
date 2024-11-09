@@ -15,20 +15,6 @@ body {
     display: flex;
     align-items: center;
 }
-
-/* .container {
-    margin: -52px 34px;
-}
-/* .header {
-    background: #2ECC71;
-    height: 21vh;
-}
-.header-line {
-    padding-top: 50px;
-    display: flex;
-    align-items: center;
-} */
-
 .nav-item {
     margin: 70px;
     color: #fff;
@@ -37,44 +23,70 @@ body {
     font-size: 32px;
     margin-right: 25px;
 }
-
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3em;
 }
-
 .form {
     display: flex;
-    flex-direction: column; /* Вертикальное расположение для логотипа */
-    align-items: center; /* Центрирование по горизонтали */
-    padding: 1em 2rem;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 1em 5rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
 }
-
 .form-image {
     margin-bottom: 15px;
 }
-
 .form-content-container {
-    width: 100%; /* Занять всю ширину */
+    width: 400px; /* Установите фиксированную ширину контейнера */
+    max-width: 100%; /* Чтобы контейнер не выходил за пределы экрана */
 }
-
 .form h1 {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     font-weight: bold;
     font-size: 32px;
     text-align: center;
 }
-
+.form-field {
+    margin-bottom: 45px;
+    width: 100%; 
+}
+.form-field label {
+    display: block;
+    color: #888; /* Серый цвет текста */
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.underline {
+    border: none; /* Убираем стандартные стили hr */
+    border-bottom: 2px solid #888; /* Серое подчеркивание */
+    margin: 0; /* Убираем отступы */
+    width: 100%; /* Занять всю ширину */
+}
+.submit-button {
+    background-color: #2ECC71; /* Зеленый цвет кнопки */
+    color: white; /* Белый цвет текста */
+    border: none;
+    padding: 10px 46px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1px;
+    margin-left: 85px;
+    margin-bottom: 20px;
+}
+.submit-button:hover {
+    background-color: #27AE60; /* Темнее при наведении */
+}
 footer {
     background-color: #333;
     color: #fff;
     padding: 1em;
     text-align: center;
     font-size: 24px;
-
 }
