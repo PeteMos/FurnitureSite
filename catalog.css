@@ -3,31 +3,21 @@ body {
     background: #F5DE8A;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .container {
     margin: -52px 200px;
 }
+
 .header {
     background: #2ECC71;
     height: 15vh;
 }
-.header-line {
-    padding-top: 50px;
-    display: flex;
-    align-items: center;
-}
 
-/* .container {
-    margin: -52px 34px;
-}
-/* .header {
-    background: #2ECC71;
-    height: 21vh;
-}
 .header-line {
     padding-top: 50px;
     display: flex;
     align-items: center;
-} */
+}
 
 .nav-item {
     margin: 70px;
@@ -47,39 +37,77 @@ main {
 
 .catalog {
     display: flex;
-    flex-direction: column; /* Вертикальное расположение для логотипа */
-    align-items: center; /* Центрирование по горизонтали */
-    padding: 1em 10rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
 }
 
 .catalog-content-container {
-    display: flex; /* Горизонтальное расположение для текста и изображения */
-    justify-content: center; /* Центрируем содержимое */
-    align-items: flex-start; /* Выравниваем по верхнему краю */
-    width: 100%; /* Занять всю ширину */
-}
-.item {
-    display: flex; /* Используем флекс для вертикального расположения текста и изображения */
-    flex-direction: column; /* Вертикальное расположение текста над изображением */
-    align-items: center; /* Центрируем элементы по горизонтали */
-    margin: 0 20px; /* Отступы между элементами */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 28px;
+}
+
+.potcatalog-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.item-pot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 70px;
+}
 
 .catalog h2 {
     font-size: 40px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-weight: bold;
     margin-top: 5px;
 }
 
 .catalog-content-container p {
     font-size: 32px;
-    margin-top: 5px;
+    margin-top: -10px;
     margin-bottom: 2px;
+}
+
+.potcatalog-content-container p {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+.product-info {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    display: flex; /* Используем flex для выравнивания текста */
+    align-items: center; /* Выравниваем по вертикали */
+    white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+.item-pot b {
+    margin-right: 10px; /* Пробел между названием и ценой */
 }
 
 .button {
@@ -93,6 +121,7 @@ main {
     font-size: 24px; /* Размер шрифта */
     transition: background-color 0.3s; /* Плавный переход цвета */
 }
+
 .button:hover {
     background-color: #2ECC71; /* Более темный зеленый при наведении */
 }
