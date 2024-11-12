@@ -39,52 +39,163 @@ main {
     border-radius: 8px;
 }
 .catalog-content-container {
-    display: flex; /* Обеспечиваем горизонтальное расположение колонок */
+    display: flex;
+    margin-bottom: 20px;
 }
 .first_column, .second_column {
-    flex: 1; /* Каждая колонка занимает равное пространство */
-    margin: 20px;
+    flex: 1;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    margin: 0 80px;
+}
+.komod {
+    width: 500px;
+}
+.komod-image {
+    margin-top: 12px;
+    margin-left: 80px;
+    margin-bottom: 15px;
+}
+.komod-name {
+    font-weight: bold;
+    font-size: 28px;
 }
 .product-price {
     display: flex;
-    justify-content: flex-end; /* Выровнять текст вправо */
+    justify-content: flex-end;
     align-items: center;
+    margin-bottom: 4px;
 }
 .product-price b {
-    margin-right: 10px;
+    margin-right: 8px;
+    font-size: 24px;
+}
+.product-price p {
+    margin-right: 28px;
+    font-size: 24px;
+}
+.characteristic .characteristic-name {
+    margin-bottom: 20px;
 }
 .characteristic .product-info p {
-    margin: 5px 0; /* Установить отступы между строками */
+    margin: 5px 0;
+    font-size: 22px;
 }
-
+.characteristic b {
+    font-size: 30px;
+}
+.characteristic .product-info b {
+    font-size: 22px;
+}
 .characteristic {
-    margin-top: 20px;
+    margin-top: -10px;
+}
+.sofa-image {
+    margin-top: -2px;
+    margin-left: 80px;
+    margin-bottom: 15px;
+}
+.sofa-name {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
 }
 .order-card {
     margin-top: 20px;
 }
 .order-card label {
+    font-size: 20px;
+    font-weight: lighter;
+}
+.card-info {
+    margin-top: 60px; 
+}
+.card-info p {
+    font-size: 20px;
+    font-weight: lighter;
+}
+.form-row {
+    display: flex; /* Используем Flexbox для выравнивания */
+    justify-content: space-between; /* Разделяем элементы */
+}
+
+.form-row div {
+    flex: 1; /* Задаем равные размеры для полей */
+    margin-right: 10px; /* Отступ между полями */
+    position: relative; /* Для позиционирования псевдоэлементов */
+}
+
+.form-row div:last-child {
+    margin-right: 0; /* Убираем отступ у последнего поля */
+}
+
+.order-card label {
     display: block;
     margin: 10px 0 5px;
 }
+
 .order-card input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none;
+    border-radius: 0; /* Убираем закругление */
+    outline: none; /* Убираем обводку */
+    font-size: 20px;
+    color: #000; /* Устанавливаем черный цвет текста */
 }
+
+.form-row div::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; /* Высота линии */
+    background-color: #ccc; /* Цвет линии */
+}
+
+.form-row div:nth-child(1)::after {
+    width: calc(100% - 10px); /* Длина линии для поля "Дата окончания" (длиннее, чем для CVV) */
+}
+
+.form-row div:nth-child(2)::after {
+    width: calc(100% / 2); /* Половина ширины для поля "CVV" */
+}
+
+.form-row div:nth-child(3)::after {
+    width: 100%; /* Полная ширина для поля "Номер карты" */
+}
+
+/* Четкие линии для всех полей */
+.form-row div::after {
+    background-color: #000;
+}
+
+.form-row div:nth-child(1)::after {
+    width: calc(100% - 10px); /* Длина линии для поля "Дата окончания" */
+}
+
+.form-row div:nth-child(2)::after {
+    width: calc(100% / 2); /* Половина ширины для поля "CVV" */
+}
+
+.form-row div:nth-child(3)::after {
+    width: 100%; /* Полная ширина для поля "Номер карты" */
+}
+
 button {
     background-color: #2ECC71;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 40px;
     font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    margin-top: 20px;
+    border-radius: 6px;
+    margin-top: 40px;
+    margin-left: 95px;
 }
 button:hover {
-    background-color: #27ae60; /* Цвет при наведении */
+    background-color: #27ae60;
 }
 footer {
     background-color: #333;
@@ -95,5 +206,9 @@ footer {
 }
 .bank-logos img {
     margin: 0 10px;
-    height: 40px; /* Установите нужную высоту для логотипов */
+    height: 58px;
+    cursor: pointer; /* Указатель при наведении на изображение */
+}
+.center {
+    text-align: center; /* Центрирование текста */
 }

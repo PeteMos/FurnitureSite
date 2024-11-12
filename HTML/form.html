@@ -6,7 +6,6 @@
     <title>Онлайн магазин мебели - заполнение формы</title>
     <link rel="stylesheet" type="text/css" href="../CSS/form.css">
     <style>
-        /* Добавим стили для меток и полей ввода */
         .form-field {
             position: relative;
             margin-bottom: 45px;
@@ -18,13 +17,13 @@
             font-size: 18px;
             border: 1px solid #ffffff;
             border-radius: 4px;
-            outline: none; /* Убирает обводку при фокусе */
+            outline: none;
         }
         .form-field label {
             position: absolute;
             left: 2px;
             top: 10px;
-            color: #888; /* Серый цвет текста */
+            color: #888;
             transition: 0.2s ease all;
         }
         .form-field input:focus + label,
@@ -34,40 +33,12 @@
             top: -15px;
             left: 5px;
             font-size: 14px;
-            color: #2ECC71; /* Цвет метки при фокусе */
+            color: #2ECC71;
         }
-        /* Стили для модального окна */
-        .modal {
-            display: none; /* Скрыто по умолчанию */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px; /* Максимальная ширина */
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -98,16 +69,19 @@
                     <input type="text" id="fio" placeholder=" " required>
                     <label for="fio">Ваше ФИО</label>
                     <hr class="underline">
+                    <div id="fio-error" class="error-message"></div>
                 </div>
                 <div class="form-field">
                     <input type="email" id="email" placeholder=" " required>
                     <label for="email">Ваш Email</label>
                     <hr class="underline">
+                    <div id="email-error" class="error-message"></div>
                 </div>
                 <div class="form-field">
                     <textarea id="comment" placeholder=" " required></textarea>
                     <label for="comment">Ваш комментарий</label>
                     <hr class="underline">
+                    <div id="comment-error" class="error-message"></div>
                 </div>
                 <button class="submit-button" id="submit-button">Отправить</button>
             </div>
@@ -116,50 +90,48 @@
     <footer>
         <p>&copy; 2024 Онлайн магазин мебели. Все права защищены.</p>
     </footer>
-    <!-- Модальное окно -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="close-modal">&times;</span>
-            <p id="modal-message"></p>
-        </div>
-    </div>
     <script>
         document.getElementById('submit-button').addEventListener('click', function(event) {
             event.preventDefault(); // Предотвращаем отправку формы
             const fio = document.getElementById('fio').value.trim();
             const email = document.getElementById('email').value.trim();
             const comment = document.getElementById('comment').value.trim();
-            const modalMessage = document.getElementById('modal-message');
-            const modal = document.getElementById('modal');
-            // Сбросим сообщение об ошибках
-            modalMessage.textContent = '';
+            const fioError = document.getElementById('fio-error');
+            const emailError = document.getElementById('email-error');
+            const commentError = document.getElementById('comment-error');
+
+            // Сбросим сообщения об ошибках
+            fioError.textContent = '';
+            emailError.textContent = '';
+            commentError.textContent = '';
+
             // Валидация
-            if (!fio || !email || !comment) {
-                modalMessage.textContent = 'Пожалуйста, заполните все поля.';
-                modal.style.display = 'block';
+            let hasError = false;
+
+            if (!fio) {
+                fioError.textContent = 'Пожалуйста, заполните это поле.';
+                hasError = true;
+            }
+            if (!email) {
+                emailError.textContent = 'Пожалуйста, заполните это поле.';
+                hasError = true;
             } else if (!validateEmail(email)) {
-                modalMessage.textContent = 'Пожалуйста, введите корректный Email.';
-                modal.style.display = 'block';
-            } else {
-                modalMessage.textContent = 'Форма успешно отправлена!';
-                modal.style.display = 'block';
-                // Здесь можно добавить код для отправки данных на сервер
+                emailError.textContent = 'Пожалуйста, введите корректный Email.';
+                hasError = true;
+            }
+            if (!comment) {
+                commentError.textContent = 'Пожалуйста, заполните это поле.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                alert('Форма успешно отправлена!');
             }
         });
+
         function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Простой регэксп для проверки email
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(String(email).toLowerCase());
-        }
-        // Закрытие модального окна
-        document.getElementById('close-modal').onclick = function() {
-            document.getElementById('modal').style.display = 'none';
-        }
-        // Закрытие модального окна при клике вне его
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
         }
     </script>
 </body>

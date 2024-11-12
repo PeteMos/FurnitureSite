@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Онлайн магазин мебели - заказ</title>
     <link rel="stylesheet" type="text/css" href="../CSS/order.css">
+    <style>
+        .order-card {
+            margin-top: 20px;
+        }
+        .form-row {
+            display: flex; /* Используем Flexbox для выравнивания */
+            justify-content: space-between; /* Разделяем элементы */
+        }
+        .form-row div {
+            flex: 1; /* Задаем равные размеры для полей */
+            margin-right: 10px; /* Отступ между полями */
+        }
+        .form-row div:last-child {
+            margin-right: 0; /* Убираем отступ у последнего поля */
+        }
+        .order-card label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .order-card input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc; /* Убираем верхнюю границу */
+            border-radius: 0; /* Убираем закругление */
+            outline: none; /* Убираем обводку */
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     
@@ -29,25 +59,32 @@
             <div class="catalog-content-container">              
                 <div class="first_column">
                     <div class="komod">
-                        <img src="../img/divan_krovat.png" alt="Диван-кровать">
-                        <b>Диван-кровать "Сан Ремо" серый <br /> 
-                            велюр Кабрио 31</b>
+                        <div class="komod-image">
+                            <img src="../img/divan_krovat.png" alt="Диван-кровать">
+                        </div>
+                        <div class="komod-name">
+                            <b>Диван-кровать "Сан Ремо" серый <br /> 
+                                велюр Кабрио 31</b>
+                        </div>
                         <div class="product-price">
-                            <b>Цена:</b><p class="price">18990</p>
+                            <b>Цена </b><p class="price">18990</p>
                         </div>
                     </div>
                     <div class="characteristic">
-                        <b>Характеристика</b>
+                        <div class="characteristic-name">
+                            <b>Характеристика</b>
+                        </div>
                         <div class="product-info">
-                            <p><b>Стиль:</b> Современные</p>
-                            <p><b>Ящик для белья:</b> Да</p>
-                            <p><b>Наполнение:</b> ППУ</p>
-                            <p><b>Материал каркаса:</b> Высококачественная фанера / ДСП</p>
-                            <p><b>Подлокотники:</b> Без подлокотников</p>
-                            <p><b>Хромированные ножки:</b> Да</p>
-                            <p><b>Исполнение:</b> Стандартное (по фото)</p>
-                            <p><b>Гарантия (мес):</b> 6</p>
-                            <p><b>Состояние поставки:</b> Требуется сборка</p>
+                            <p><b>Стиль -</b> Современные</p>
+                            <p><b>Ящик для белья -</b> Да</p>
+                            <p><b>Наполнение -</b> ППУ</p>
+                            <p><b>Материал каркаса -</b> Высококачественная <br/>
+                                фанера / ДСП</p>
+                            <p><b>Подлокотники -</b> Без подлокотников</p>
+                            <p><b>Хромированные ножки -</b> Да</p>
+                            <p><b>Исполнение -</b> Стандартное (по фото)</p>
+                            <p><b>Гарантия (мес) -</b> 6</p>
+                            <p><b>Состояние поставки -</b> Требуется сборка</p>
                         </div>
                     </div>
                 </div>
@@ -55,24 +92,36 @@
 
                 <div class="second_column">
                     <div class="sofa">
-                        <img src="../img/order-logo.png" alt="Логотип">
-                        <b>Оформление заказа</b>
-                        <div class="product-info">
+                        <div class="sofa-image">
+                            <img src="../img/order-logo.png" alt="Логотип">
+                        </div>
+                        <div class="komod-name center">
+                            <b>Оформление заказа</b>
+                        </div>
+                        <div class="card-info">
                             <p>Выберите банк</p>
                             <div class="bank-logos">
-                                <img src="../img/MasterCard.png" alt="МастерКард">
-                                <img src="../img/vtb.png" alt="ВТБ">
-                                <img src="../img/alfabank.png" alt="Альфа">
+                                <img src="../img/MasterCard.png" alt="МастерКард" onclick="selectBank('MasterCard')">
+                                <img src="../img/vtb.png" alt="ВТБ" onclick="selectBank('VTB')">
+                                <img src="../img/alfabank.png" alt="Альфа" onclick="selectBank('Alfa-Bank')">
                             </div>
                         </div>
                     </div>
                     <div class="order-card">
                         <label for="card-number">Номер карты</label>
-                        <input type="text" id="card-number" placeholder="Введите номер карты">
-                        <label for="expiry-date">Дата окончания</label>
-                        <input type="text" id="expiry-date" placeholder="MM/YY">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" placeholder="CVV">
+                        <input type="text" id="card-number">
+                        
+                        <div class="form-row">
+                            <div>
+                                <label for="expiry-date">Дата окончания</label>
+                                <input type="text" id="expiry-date">
+                            </div>
+                            <div>
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv">
+                            </div>
+                        </div>
+                        
                         <button id="submit-button">Отправить</button>
                     </div>
                 </div>
@@ -85,12 +134,15 @@
     </footer>
 
     <script>
+        function selectBank(bankName) {
+            alert('Вы выбрали банк: ' + bankName);
+        }
+
         document.getElementById('submit-button').addEventListener('click', function() {
             const cardNumber = document.getElementById('card-number').value;
             const expiryDate = document.getElementById('expiry-date').value;
             const cvv = document.getElementById('cvv').value;
 
-            // Простейшая валидация
             if (cardNumber === '' || expiryDate === '' || cvv === '') {
                 alert('Пожалуйста, заполните все поля.');
             } else {
