@@ -33,7 +33,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 1em 2rem;
+    padding: 1em 7rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
@@ -46,7 +46,6 @@ main {
     flex: 1;
     margin-left: 70px;
     margin-bottom: 10px;
-    margin: 0 80px;
 }
 .komod {
     width: 500px;
@@ -58,7 +57,7 @@ main {
 }
 .komod-name {
     font-weight: bold;
-    font-size: 28px;
+    font-size: 30px;
 }
 .product-price {
     display: flex;
@@ -90,6 +89,9 @@ main {
 .characteristic {
     margin-top: -10px;
 }
+.sofa {
+    margin-right: 250px;
+}
 .sofa-image {
     margin-top: -2px;
     margin-left: 80px;
@@ -107,6 +109,9 @@ main {
     font-size: 20px;
     font-weight: lighter;
 }
+.number-form {
+    margin-right: 300px;
+}
 .card-info {
     margin-top: 60px; 
 }
@@ -115,72 +120,45 @@ main {
     font-weight: lighter;
 }
 .form-row {
-    display: flex; /* Используем Flexbox для выравнивания */
-    justify-content: space-between; /* Разделяем элементы */
+    display: flex;
+    justify-content: space-between;
 }
-
 .form-row div {
-    flex: 1; /* Задаем равные размеры для полей */
-    margin-right: 10px; /* Отступ между полями */
-    position: relative; /* Для позиционирования псевдоэлементов */
+    flex: 1;
+    margin-right: 10px; 
+    position: relative;
 }
-
 .form-row div:last-child {
-    margin-right: 0; /* Убираем отступ у последнего поля */
+    margin-right: 0;
+}
+.order-card {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
 }
 
-.order-card label {
-    display: block;
-    margin: 10px 0 5px;
+.number-form div, .form-row div {
+    margin-bottom: 20px; 
 }
 
 .order-card input {
-    width: 100%;
+    width: 80%; 
+    max-width: 400px;
     padding: 10px;
     border: none;
-    border-radius: 0; /* Убираем закругление */
-    outline: none; /* Убираем обводку */
+    outline: none;
     font-size: 20px;
-    color: #000; /* Устанавливаем черный цвет текста */
+    color: #333;
 }
 
-.form-row div::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px; /* Высота линии */
-    background-color: #ccc; /* Цвет линии */
-}
-
-.form-row div:nth-child(1)::after {
-    width: calc(100% - 10px); /* Длина линии для поля "Дата окончания" (длиннее, чем для CVV) */
-}
-
-.form-row div:nth-child(2)::after {
-    width: calc(100% / 2); /* Половина ширины для поля "CVV" */
-}
-
-.form-row div:nth-child(3)::after {
-    width: 100%; /* Полная ширина для поля "Номер карты" */
-}
-
-/* Четкие линии для всех полей */
-.form-row div::after {
+.input-line {
+    width: 90%;
+    max-width: 300px;
+    height: 2px; 
     background-color: #000;
+    margin-top: 5px;
 }
 
-.form-row div:nth-child(1)::after {
-    width: calc(100% - 10px); /* Длина линии для поля "Дата окончания" */
-}
-
-.form-row div:nth-child(2)::after {
-    width: calc(100% / 2); /* Половина ширины для поля "CVV" */
-}
-
-.form-row div:nth-child(3)::after {
-    width: 100%; /* Полная ширина для поля "Номер карты" */
-}
 
 button {
     background-color: #2ECC71;
@@ -192,7 +170,7 @@ button {
     cursor: pointer;
     border-radius: 6px;
     margin-top: 40px;
-    margin-left: 95px;
+    margin-right: 225px;
 }
 button:hover {
     background-color: #27ae60;
@@ -207,8 +185,8 @@ footer {
 .bank-logos img {
     margin: 0 10px;
     height: 58px;
-    cursor: pointer; /* Указатель при наведении на изображение */
+    cursor: pointer;
 }
 .center {
-    text-align: center; /* Центрирование текста */
+    text-align: center; 
 }
